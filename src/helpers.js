@@ -1,6 +1,4 @@
 import serverless from 'serverless-http'
-import { customAlphabet } from 'nanoid'
-import nolookalikes from 'nanoid-dictionary/nolookalikes'
 
 /**
  * @param {import('koa').Koa} app Koa application
@@ -17,10 +15,3 @@ export const wrapper = (app, middlewares = []) => {
     return serverless(app)(event, context)
   }
 }
-
-/**
- * Generate a short ID for use as a primary key
- *
- * @returns {string}
- */
-export const nanoid = customAlphabet(nolookalikes, 10)

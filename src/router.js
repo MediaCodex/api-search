@@ -1,9 +1,6 @@
 import Koa from 'koa'
 import Router from '@koa/router'
-import { handler as createHandler, middleware as createMiddleware } from './controllers/http/create'
-import { handler as updateHandler, middleware as updateMiddleware } from './controllers/http/update'
-import { handler as indexHandler, middleware as indexMiddleware } from './controllers/http/index'
-import { handler as showHandler, middleware as showMiddleware } from './controllers/http/show'
+import { handler as searchHandler, middleware as searchMiddleware } from './controllers/http/search'
 import defaultMiddleware from './middleware'
 
 /**
@@ -18,10 +15,7 @@ for (const middleware of defaultMiddleware) {
 /**
  * Define routes
  */
-router.get('/', indexHandler, ...indexMiddleware)
-router.post('/', createHandler, ...createMiddleware)
-router.get('/:slug', showHandler, ...showMiddleware)
-router.put('/:slug', updateHandler, ...updateMiddleware)
+router.post('/', searchHandler, ...searchMiddleware)
 
 // bind routes to koa
 if (process.env.PATH_PREFIX) {
