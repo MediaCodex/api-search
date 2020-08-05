@@ -1,0 +1,32 @@
+default:
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - .npm
+
+stages:
+  - validate
+  - build
+
+.node_image:
+  image: node:erbium-alpine
+
+lint_js:
+  stage: validate
+  extends:
+    - .node_image
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run lint
+
+build_node:
+  stage: build
+  extends:
+    - .node_image
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+      - dist/

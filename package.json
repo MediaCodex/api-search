@@ -1,0 +1,46 @@
+{
+  "name": "@mediacodex/search",
+  "version": "1.0.0",
+  "description": "API Microservice for search",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "node -r esm ./src/router.js",
+    "build": "webpack && npm run build:zip",
+    "build:zip": "cd build && for i in *.js; do zip $i.zip $i; done",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:tf": "cd terraform && terafrom validate -recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/mediacodex/backend/search.git"
+  },
+  "author": "DeltaByte (https://gitlab.com/DeltaByte)",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://gitlab.com/mediacodex/backend/search/issues"
+  },
+  "homepage": "https://gitlab.com/mediacodex/backend/search#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^25.5.4",
+    "prettier": "^2.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@koa/router": "^9.3.1",
+    "axios": "^0.19.2",
+    "esm": "^3.2.25",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json-error": "^3.1.2",
+    "serverless-http": "^2.5.0"
+  }
+}
