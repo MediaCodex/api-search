@@ -1,4 +1,4 @@
-# Companies service
+# Search service
 
 ## First deployment
 
@@ -14,3 +14,13 @@ even be set via the CI env so you don't have to commit any changes, just run the
 | Default value | TF Var         | Env Var               |
 | ------------- | -------------- | --------------------- |
 | `false`       | `first_deploy` | `TF_VAR_first_deploy` |
+
+## Credentials
+
+Ontop of the normal AWS credentials, this service requires some additional credentials to be provided.
+
+| Name                   | Description                                               |
+| ---------------------- | --------------------------------------------------------- |
+| ELASTICSEARCH_URL      | Elasticsearch URL                                         |
+| ELASTICSEARCH_USERNAME | Username for connecting to elasticsearch using basic auth |
+| ELASTICSEARCH_PASSWORD | Password for connecting to elasticsearch using basic auth |

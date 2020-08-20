@@ -143,13 +143,6 @@ data "aws_iam_policy_document" "assume_ecs_http" {
   }
 }
 
-module "iam_ecs_http_dynamodb" {
-  source = "./modules/iam-dynamodb"
-  role   = aws_iam_role.ecs_http.id
-  table  = aws_dynamodb_table.search.arn
-  read   = true
-}
-
 /*
  * Gateway mapping
  */
@@ -167,12 +160,6 @@ resource "aws_apigatewayv2_integration" "ecs_http" {
 
 resource "aws_apigatewayv2_route" "ecs_http_index" {
   api_id    = data.terraform_remote_state.core.outputs.gateway_id
-  route_key = "GET /search"
-  target    = "integrations/${aws_apigatewayv2_integration.ecs_http.id}"
-}
-
-resource "aws_apigatewayv2_route" "ecs_http_show" {
-  api_id    = data.terraform_remote_state.core.outputs.gateway_id
-  route_key = "GET /search/{id}"
+  route_key = "POST /search"
   target    = "integrations/${aws_apigatewayv2_integration.ecs_http.id}"
 }

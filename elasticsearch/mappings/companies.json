@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "founded": {
+      "type": "date",
+      "format": "strict_date_time||strict_date_time_no_millis"
+    }
+  }
+}

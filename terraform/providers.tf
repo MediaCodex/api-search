@@ -49,3 +49,7 @@ data "terraform_remote_state" "core" {
   }
 }
 
+provider "elasticsearch" {
+  elasticsearch_version = "7.8"
+  sniff = false
+}
